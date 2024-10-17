@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #A87493; /* Mesma cor de fundo do Home.css */
+}
+
+.form-wrapper {
+    width: 420px;
+    background-color: #FCEBF7; /* Mesma cor de fundo da HomeContent no Home.css */
+    border-radius: 15px; /* Mesmo estilo de borda arredondada */
+    padding: 30px 40px;
+    border: 3px solid black; /* Bordas pretas para combinar com o estilo */
+}
+
+.form-wrapper input {
+    background-color: #ff97d5;
+   border: 3px solid black;
+}
+
+.form-wrapper h2 {
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-control {
+    width: 100%;
+    background-color: #FFFFFF; /* Branco */
+    border: 2px solid black;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #333333; /* Cinza Escuro */
+}
+
+.form-wrapper label {
+    font-weight: bold;
+}
+
+
+
+.form-control::placeholder {
+    color: #3f3f3f;
+}
+
+.form-button {
+    background-color: #DEEBDD;
+    color: black;
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.form-link {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}

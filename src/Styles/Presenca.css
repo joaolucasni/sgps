@@ -1,0 +1,98 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #A87493; /* Cor de fundo */
+}
+
+.list-wrapper {
+  width: 450px;
+  background-color: #FCEBF7; /* Cor de fundo semelhante à página Home */
+  border-radius: 15px;
+  padding: 30px 40px;
+  border: 3px solid black; /* Bordas pretas */
+}
+
+h2 {
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.list-group {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between; /* Para alinhar o nome e o checkbox */
+  align-items: center;
+  background-color: #ff97d5; /* Mesma cor do input no Cadastro */
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list-item strong {
+  color: #333; /* Cor para o texto dos nomes */
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2); /* Para aumentar o tamanho da checkbox */
+  margin-right: 10px; /* Espaçamento entre a checkbox e o link */
+}
+
+.Link {
+  color: black;
+  text-decoration: none;
+  border: 2px solid black;
+  padding: 5px;
+  background-color: #DEEBDD;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.Link:hover {
+  background-color: #C9E4C5;
+  text-decoration: underline;
+}
+
+.form-button {
+  background-color: #DEEBDD;
+  color: black;
+  border: 3px solid black;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.form-button:hover {
+  background-color: #C9E4C5; /* Cor de hover para o botão */
+}
+
+.form-link {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.form-link:hover {
+  text-decoration: underline;
+}

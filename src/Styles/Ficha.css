@@ -1,0 +1,61 @@
+/* Ficha.css */
+
+#background {
+  background-color: #A87493; /* Fundo rosa */
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Adiciona posição relativa para posicionamento do botão */
+}
+
+#content {
+  background-color: #FCEBF7; /* Contêiner rosa suave */
+  color: #000; /* Texto preto para contraste */
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%; /* Ajuste conforme necessário */
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.card-title,
+.card-text,
+.card-subtitle {
+  margin-bottom: 10px; /* Espaçamento entre as linhas */
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #DEEBDD; /* Cor do botão */
+  color: #000; /* Cor do texto do botão */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #ac8043; /* Cor do botão ao passar o mouse */
+}
