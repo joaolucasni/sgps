@@ -21,50 +21,47 @@ function Buscar() {
 
   async function search() {
     if (!searchInput) {
-      console.log("Por favor, insira um nome para buscar.");
-      return;
+        console.log("Por favor, insira um nome para buscar.");
+        return;
     }
-  
+
     setLoading(true);
-  
+    console.log("Buscando por:", searchInput); // Log para ver o input de busca
+
     const dbRef = ref(database, 'cadastrados');
     const queryRef = query(dbRef, orderByChild('Nome'));
-  
+
     try {
-      const snapshot = await get(queryRef);
-      if (snapshot.exists()) {
-        const atendidosData = Object.entries(snapshot.val()).map(([id, atendido]) => ({
-          id,  // Captura a chave única do Firebase
-          ...atendido
-        }));
-  
-        console.log("Dados recebidos do Firebase:", atendidosData);
-  
-        const lowerCaseSearchInput = searchInput.toLowerCase();
-  
-        const updatedAtendidos = atendidosData.map((atendido) => {
-          const lowerCaseName = atendido.Nome.toLowerCase();
-  
-          if (lowerCaseName.includes(lowerCaseSearchInput)) {
-            const imageUrl = atendido.Images || 'error.png'; // Default image if not found
-            return { ...atendido, imageUrl };
-          }
-          return null;
-        }).filter((atendido) => atendido !== null);
-  
-        console.log("Dados filtrados:", updatedAtendidos);
-  
-        setAtendidos(updatedAtendidos);
-      } else {
-        console.log("Nenhum dado encontrado.");
-        setAtendidos([]);
-      }
+        const snapshot = await get(queryRef);
+        if (snapshot.exists()) {
+            const atendidosData = Object.entries(snapshot.val()).map(([id, atendido]) => ({
+                id,
+                ...atendido
+            }));
+
+            console.log("Dados recebidos do Firebase:", atendidosData);
+
+            const lowerCaseSearchInput = searchInput.toLowerCase();
+            const updatedAtendidos = atendidosData.filter((atendido) => {
+                return atendido.Nome.toLowerCase().includes(lowerCaseSearchInput);
+            }).map((atendido) => ({
+                ...atendido,
+                imageUrl: atendido.Images || 'error.png' // Imagem padrão se não houver
+            }));
+
+            console.log("Dados filtrados:", updatedAtendidos);
+            setAtendidos(updatedAtendidos);
+        } else {
+            console.log("Nenhum dado encontrado.");
+            setAtendidos([]);
+        }
     } catch (error) {
-      console.error("Erro ao buscar dados:", error);
+        console.error("Erro ao buscar dados:", error);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  }
+}
+
   
 
   // Função para excluir o item do banco de dados

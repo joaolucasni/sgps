@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getDatabase, ref, onValue, update } from "firebase/database";
-import { app } from "../Services/ConnectionFirebase";
+import { ref, onValue, update } from "firebase/database";  // Apenas essas funções são necessárias
+import { database } from "../Services/ConnectionFirebase";  // Importando a instância correta
 import "../Styles/Presenca.css";
 import { Link } from 'react-router-dom';
 import { format } from "date-fns"; // Para formatar a data
@@ -10,8 +10,7 @@ function Presenca() {
   const [presencas, setPresencas] = useState({});
 
   useEffect(() => {
-    const db = getDatabase(app);
-    const registrosRef = ref(db, 'cadastrados');
+    const registrosRef = ref(database, 'cadastrados');  // Usando o database direto da conexão
 
     onValue(registrosRef, (snapshot) => {
       const data = snapshot.val();
@@ -21,12 +20,9 @@ function Presenca() {
             id: key,
             ...value,
           }))
-          // Filtrar registros que possuem campos obrigatórios preenchidos
           .filter(registro => registro.Nome && registro.Nome.trim() !== '');
 
-        // Ordenar a lista por nome em ordem alfabética
         lista.sort((a, b) => a.Nome.localeCompare(b.Nome));
-        
         setRegistros(lista);
       } else {
         setRegistros([]);
@@ -34,7 +30,6 @@ function Presenca() {
     });
   }, []);
 
-  // Função para marcar presença
   const handleCheckboxChange = (id) => {
     setPresencas((prevPresencas) => ({
       ...prevPresencas,
@@ -42,19 +37,16 @@ function Presenca() {
     }));
   };
 
-  // Função para salvar presenças no banco de dados
   const savePresencas = () => {
-    const db = getDatabase(app);
-    const hoje = format(new Date(), "dd/MM/yyyy");
+    const hoje = format(new Date(), "dd-MM-yyyy");
 
     registros.forEach((registro) => {
       const presencaAtual = presencas[registro.id] || false;
 
-      // Atualizar a presença no banco de dados com a data de hoje
-      update(ref(db, `cadastrados/${registro.id}/Presenca/${hoje}`), {
-        presente: presencaAtual,
+      update(ref(database, `presencas/${hoje}/${registro.Nome}`), {
+        Presente: presencaAtual,
       }).catch((error) => {
-        console.error("Erro ao salvar presença: ", error);
+        console.error("Erro ao salvar chamada: ", error);
       });
     });
 
@@ -64,7 +56,7 @@ function Presenca() {
   return (
     <div className="Body">
       <div className="list-wrapper">
-        <h2>Lista de Registros</h2>
+        <h2>Lista de chamada</h2>
         <ul className="list-group">
           {registros.map((registro) => (
             <li key={registro.id} className="list-item">
@@ -83,6 +75,9 @@ function Presenca() {
         </button>
         <Link className="form-link" to="/">
           Voltar para a Página Inicial
+        </Link>
+        <Link className="form-link" to="/ListarPresencas">
+          Listar Presenças
         </Link>
       </div>
     </div>

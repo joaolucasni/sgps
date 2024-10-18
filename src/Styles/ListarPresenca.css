@@ -1,0 +1,76 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #A87493;
+  }
+  
+  .list-wrapper {
+    width: 450px;
+    background-color: #FCEBF7;
+    border-radius: 15px;
+    padding: 30px 40px;
+    border: 3px solid black;
+  }
+  
+  h2 {
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .combobox-wrapper {
+    margin-bottom: 20px;
+  }
+  
+  .combobox-wrapper label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 2px solid black;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333333;
+  }
+  
+  .list-group {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .list-item {
+    background-color: #ff97d5;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  strong {
+    color: #333;
+  }
+  
+  .form-link {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .form-link:hover {
+    text-decoration: underline;
+  }
+  

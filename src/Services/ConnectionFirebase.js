@@ -6,13 +6,14 @@ import { getAnalytics } from "firebase/analytics";
 
 // Configuração do Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDzMnV2dDiatT0bPfZJ341XnYgG00tklpo",
-  authDomain: "projetosgps-bef72.firebaseapp.com",
-  projectId: "projetosgps-bef72",
-  storageBucket: "projetosgps-bef72.appspot.com",
-  messagingSenderId: "410866829004",
-  appId: "1:410866829004:web:ccc75e0c17b404d60fe469",
-  measurementId: "G-63JK3H72BG"
+  apiKey: "AIzaSyAK2tcKc4IiFnnIO4wmXV3cdx9SUrOVlXo",
+  authDomain: "sgps-76f89.firebaseapp.com",
+  databaseURL: "https://sgps-76f89-default-rtdb.firebaseio.com",
+  projectId: "sgps-76f89",
+  storageBucket: "sgps-76f89.appspot.com",
+  messagingSenderId: "246812535737",
+  appId: "1:246812535737:web:036e197246776355146468",
+  measurementId: "G-4Z1TZM4938"
 };
 
 // Inicialize o Firebase

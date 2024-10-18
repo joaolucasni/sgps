@@ -30,14 +30,14 @@ function Cadastro() {
       alert("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
-
+  
     const db = getDatabase(app);
     const newDocRef = push(ref(db, 'cadastrados'));
-
+  
     let imageUrl = "";
     if (imageFile) {
       const imageRef = storageRef(storage, `images/${imageFile.name}`);
-
+      
       try {
         await uploadBytes(imageRef, imageFile);
         imageUrl = await getDownloadURL(imageRef);
@@ -45,18 +45,19 @@ function Cadastro() {
         console.error('Erro ao carregar a imagem: ', error);
       }
     }
-
-    set(newDocRef, {
-      Nome: nome,
-      Endereco: endereco,
-      Data: formatDate(data),
-      Idade: idade,
-      Contato: contato,
-      Responsavel: responsavel,
-      Images: imageUrl
-    })
-    .then(() => {
+  
+    try {
+      await set(newDocRef, {
+        Nome: nome,
+        Endereco: endereco,
+        Data: formatDate(data),
+        Idade: idade,
+        Contato: contato,
+        Responsavel: responsavel,
+        Images: imageUrl
+      });
       alert("Dados salvos com sucesso!");
+      // Limpa os campos após salvar
       setNome("");
       setEndereco("");
       setData(null);
@@ -64,11 +65,10 @@ function Cadastro() {
       setContato("");
       setResponsavel("");
       setImageFile(null);
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Erro ao salvar os dados: ", error);
-      alert("Erro: " + error.message);
-    });
+      alert("Erro ao salvar os dados: " + error.message);
+    }
   };
 
   return (
